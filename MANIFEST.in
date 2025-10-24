@@ -1,0 +1,7 @@
+include README.md
+prune "ORIGINAL LIB (PYTHON 3.9)"
+prune "UPDATED LIB (PYTHON 3.12)"
+prune DATASETS
+prune QUBOs
+prune RESULTS_NEAL
+prune RESULTS_SQA
