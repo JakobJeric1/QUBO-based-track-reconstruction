@@ -30,12 +30,12 @@ https://www.kaggle.com/c/trackml-particle-identification
 
 ## Pipeline Overview
 
-The project follows an end-to-end workflow designed for high-energy physics track reconstruction:
+The algorithm performs end-to-end reconstruction of particle tracks from raw detector hits using a QUBO-based optimization approach.  
+Below you can see a quick overview of the main algorithmic steps, which are briefly described in the sections that follow.
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/b206146d-8844-4071-9d16-e8d430e37eb7" width="700" alt="QUBO pipeline diagram">
 </p>
-
 
 ### 1. Dataset Preparation
 Raw TrackML hit data are parsed into *doublets* and from them into *triplets* that represent possible particle trajectory segments.
@@ -54,6 +54,7 @@ Each solver explores the energy landscape to find combinations of segments formi
 
 ### 4. Evaluation and Scoring
 The reconstructed tracks are compared against the ground truth to compute **precision** and **recall** of the doublets.
+
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/f91f7b5a-aa84-43b8-8137-384cea7d42a9" width="48%" alt="Track reconstruction result">
