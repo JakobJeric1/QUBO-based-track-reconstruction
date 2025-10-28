@@ -31,7 +31,8 @@ https://www.kaggle.com/c/trackml-particle-identification
 ## Pipeline Overview
 
 The algorithm performs end-to-end reconstruction of particle tracks from raw detector hits using a QUBO-based optimization approach.  
-Below you can see a quick overview of the main algorithmic steps, which are briefly described in the sections that follow.
+Below you can see a quick overview of the main algorithmic steps, which are briefly described in the sections that follow.  
+Steps **1–4** correspond directly to the main scripts included in the repository, each implementing one stage of the pipeline.
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/b206146d-8844-4071-9d16-e8d430e37eb7" width="700" alt="QUBO pipeline diagram">
