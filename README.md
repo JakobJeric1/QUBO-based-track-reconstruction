@@ -11,7 +11,7 @@ Additional scripts demonstrate solving QUBOs using the OpenJij simulated quantum
 > ⚠️ Requires Python 3.12 — newer versions (e.g. 3.13) are not supported due to dependency issues.
 
 ```bash
-# create and activate a virtual environment with Python 3.12 (on Linux/macOS)
+# create and activate a virtual environment with Python 3.12 (Linux/macOS)
 python3.12 -m venv .venv
 source .venv/bin/activate        # (Windows: .venv\Scripts\activate)
 
@@ -25,12 +25,11 @@ pip install "git+https://github.com/JakobJeric1/QUBO-based_track_reconstruction@
 ## Data
 
 The repository includes a small sample of 10 events under `data/train_10_events` for quick testing and development.  
-Full TrackML datasets with thousands of events are publicly available at:  
-https://www.kaggle.com/c/trackml-particle-identification
+Full TrackML datasets with thousands of events are publicly available at: https://www.kaggle.com/c/trackml-particle-identification
 
 ## Pipeline Overview
 
-The algorithm performs end-to-end reconstruction of particle tracks from raw detector hits using a QUBO-based optimization approach.  
+The algorithm performs end-to-end reconstruction of particle tracks from raw (TrackML) detector hits using a QUBO-based optimization approach.  
 Below you can see a quick overview of the main algorithmic steps, which are briefly described in the sections that follow.  
 Steps **1–4** correspond directly to the core scripts in the [`scripts/`](scripts) folder, each representing one conceptual stage of the workflow.
 
@@ -55,14 +54,15 @@ These correspond to the most consistent combinations of triplets — in other wo
 Two solvers are compared: a classical simulated annealer (`dwave-neal`) and a quantum-inspired one (`OpenJij SQA`), allowing us to study how both approaches perform on the same problem.
 
 ### 4. Evaluation and Scoring – [`plot_scores.py`](scripts/4_plot_scores.py)
+
 Finally, the reconstructed tracks are compared against the known ground truth from the simulated detector data.  
-Precision and recall metrics show how accurately the algorithm identifies true tracks while avoiding false ones.  
-The overall behavior and scaling of the reconstruction quality can then be visualized through summary plots that reveal how performance changes with event complexity.
-
-
+Precision and recall metrics quantify how accurately the algorithm identifies true tracks while avoiding false ones.  
+To understand the algorithm’s behavior across different conditions, results are evaluated for **10 separate events** at multiple **dataset densities**.  
+The plots below summarize how reconstruction quality changes with event complexity and solver type.
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/f91f7b5a-aa84-43b8-8137-384cea7d42a9" width="48%" alt="Track reconstruction result">
-  <img src="https://github.com/user-attachments/assets/362fdaec-2285-41bc-aa31-6ffb91f53043" width="48%" alt="Scoring plot">
+  <img src="https://github.com/user-attachments/assets/f91f7b5a-aa84-43b8-8137-384cea7d42a9" width="48%" alt="Scoring plot SQA">
+  <img src="https://github.com/user-attachments/assets/362fdaec-2285-41bc-aa31-6ffb91f53043" width="48%" alt="Scoring plot SA">
 </p>
 
+<p align="center"><em>Figure 2 — Precision and recall for ten TrackML events at varying dataset densities, comparing quantum-inspired (SQA, left) and classical (SA, right) solvers.</em></p>
