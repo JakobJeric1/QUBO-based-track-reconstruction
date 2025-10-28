@@ -32,33 +32,33 @@ https://www.kaggle.com/c/trackml-particle-identification
 
 The algorithm performs end-to-end reconstruction of particle tracks from raw detector hits using a QUBO-based optimization approach.  
 Below you can see a quick overview of the main algorithmic steps, which are briefly described in the sections that follow.  
-Steps **1–4** correspond directly to the main scripts included in the [`scripts/`](scripts) folder, each implementing one stage of the pipeline.
+Steps **1–4** correspond directly to the core scripts in the [`scripts/`](scripts) folder, each representing one conceptual stage of the workflow.
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/b206146d-8844-4071-9d16-e8d430e37eb7" width="700" alt="QUBO pipeline diagram">
 </p>
 
-### 1. Dataset Preparation – [`make_datasets.py`](scripts/make_datasets.py)
-Generates reduced TrackML datasets at multiple hit densities.  
-For each event, the script builds *doublets* and *triplets* representing possible particle segments and saves them in `scripts/DATASETS/`.  
-It also records key statistics (number of hits, tracks, and noise) in a CSV file for later analysis.
+### 1. Dataset Preparation – [`make_datasets.py`](scripts/1_make_datasets.py)
+The process begins with transforming raw detector hits into meaningful geometric relationships.  
+In this step, nearby hits are connected into *doublets* and then combined into *triplets*, which represent short, locally consistent fragments of potential particle trajectories.  
+This forms the building blocks from which complete tracks will later be reconstructed.
 
-### 2. QUBO Construction – [`build_qubos.py`](scripts/build_qubos.py)
-Transforms each prepared dataset into a **Quadratic Unconstrained Binary Optimization (QUBO)** model.  
-Every triplet becomes a binary variable, and the objective function encodes geometric smoothness and mutual exclusion between incompatible triplets.  
-The generated QUBOs are stored as `.pickle` files under `scripts/QUBOs/` along with metadata describing the problem size.
+### 2. QUBO Construction – [`build_qubos.py`](scripts/2_build_qubos.py)
+Each event is then expressed as a **QUBO problem** — a mathematical formulation where every triplet becomes a binary decision variable.  
+The optimization goal balances two competing ideas:  
+it rewards smooth, physically plausible track continuations, and penalizes conflicting or overlapping segments.  
+The result is a compact representation of the entire tracking problem as an energy landscape that can be explored by solvers.
 
-### 3. Solver Execution – [`solve_qubos_neal.py`](scripts/solve_qubos_neal.py) and [`solve_qubos_sqa.py`](scripts/solve_qubos_sqa.py)
-Solves the QUBO instances using two different approaches:
-- **Classical simulated annealing** via `dwave-neal`  
-- **Quantum-inspired simulated annealing** via `OpenJij SQA`
+### 3. Solver Execution – [`solve_qubos_neal.py`](scripts/3a_solve_qubos_neal.py) and [`solve_qubos_sqa.py`](scripts/3b_solve_qubos_sqa.py)
+At this stage, specialized annealing algorithms are used to search the energy landscape for the lowest-energy configurations.  
+These correspond to the most consistent combinations of triplets — in other words, the most likely particle tracks.  
+Two solvers are compared: a classical simulated annealer (`dwave-neal`) and a quantum-inspired one (`OpenJij SQA`), allowing us to study how both approaches perform on the same problem.
 
-Each solver searches the energy landscape for optimal combinations of triplets forming physically consistent tracks.  
-Results (precision, recall, TrackML score, and runtime) are saved to `RESULTS_NEAL/` or `RESULTS_SQA/`.
+### 4. Evaluation and Scoring – [`plot_scores.py`](scripts/4_plot_scores.py)
+Finally, the reconstructed tracks are compared against the known ground truth from the simulated detector data.  
+Precision and recall metrics show how accurately the algorithm identifies true tracks while avoiding false ones.  
+The overall behavior and scaling of the reconstruction quality can then be visualized through summary plots that reveal how performance changes with event complexity.
 
-### 4. Evaluation and Scoring – [`plot_scores.py`](scripts/plot_scores.py)
-Aggregates solver outputs and computes average precision and recall as functions of the number of reconstructed particles per event.  
-Generates publication-quality plots (e.g., *Precision & Recall vs # particles*) stored as `.svg` figures in the results folders.
 
 
 <p align="center">
