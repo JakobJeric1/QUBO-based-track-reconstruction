@@ -32,6 +32,13 @@ https://www.kaggle.com/c/trackml-particle-identification
 
 The project follows an end-to-end workflow designed for high-energy physics track reconstruction:
 
+## Visual Overview
+
+![Pipeline overview](https://drive.google.com/uc?export=view&id=10QOmdestfClwsrRLniJQgTcxs7YCZ5Qm)
+
+![Track reconstruction result](https://drive.google.com/uc?export=view&id=1JEJ1yopVmuV58yVyPEGRoD2Q9EVv0LbU)
+
+![QUBO scoring plot](https://drive.google.com/uc?export=view&id=1Dt7ogOG9t9-8rdMqLbk98LkLR4clP3fW)
 
 
 ### 1. Dataset Preparation
