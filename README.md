@@ -1,7 +1,7 @@
 # QUBO-based Track Reconstruction
 
 This project implements a full pipeline for reconstructing particle tracks using Quadratic Unconstrained Binary Optimization (QUBO) models.
-It’s largely based on the original [hepqpr-qallse](https://github.com/derlin/hepqpr-qallse) repository, with only minimal modifications for Python 3.12 compatibility.
+It’s **almost entirely based on the original [hepqpr-qallse](https://github.com/derlin/hepqpr-qallse)** repository, with only minimal modifications for Python 3.12 compatibility.
 Additional scripts demonstrate solving QUBOs using the OpenJij simulated quantum annealer.
 
 > Note: The original `qbsolv` backend is not included, as it is currently incompatible with Python 3.12 and no longer maintained.
