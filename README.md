@@ -32,18 +32,8 @@ https://www.kaggle.com/c/trackml-particle-identification
 
 The project follows an end-to-end workflow designed for high-energy physics track reconstruction:
 
-## Visual Overview
-
 <p align="center">
   <img src="https://github.com/user-attachments/assets/b206146d-8844-4071-9d16-e8d430e37eb7" width="900" alt="QUBO pipeline diagram">
-</p>
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/f91f7b5a-aa84-43b8-8137-384cea7d42a9" width="900" alt="Track reconstruction result">
-</p>
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/362fdaec-2285-41bc-aa31-6ffb91f53043" width="900" alt="Scoring plot">
 </p>
 
 
@@ -64,3 +54,9 @@ Each solver explores the energy landscape to find combinations of segments formi
 
 ### 4. Evaluation and Scoring
 The reconstructed tracks are compared against the ground truth to compute **precision** and **recall** of the doublets.
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/f91f7b5a-aa84-43b8-8137-384cea7d42a9" width="48%" alt="Track reconstruction result">
+  <img src="https://github.com/user-attachments/assets/362fdaec-2285-41bc-aa31-6ffb91f53043" width="48%" alt="Scoring plot">
+</p>
+
