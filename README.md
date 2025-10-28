@@ -33,7 +33,7 @@ https://www.kaggle.com/c/trackml-particle-identification
 The project follows an end-to-end workflow designed for high-energy physics track reconstruction:
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/b206146d-8844-4071-9d16-e8d430e37eb7" width="900" alt="QUBO pipeline diagram">
+  <img src="https://github.com/user-attachments/assets/b206146d-8844-4071-9d16-e8d430e37eb7" width="700" alt="QUBO pipeline diagram">
 </p>
 
 
