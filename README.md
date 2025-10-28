@@ -34,11 +34,17 @@ The project follows an end-to-end workflow designed for high-energy physics trac
 
 ## Visual Overview
 
-![Pipeline overview](https://drive.google.com/uc?export=view&id=10QOmdestfClwsrRLniJQgTcxs7YCZ5Qm)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/b206146d-8844-4071-9d16-e8d430e37eb7" width="900" alt="QUBO pipeline diagram">
+</p>
 
-![Track reconstruction result](https://drive.google.com/uc?export=view&id=1JEJ1yopVmuV58yVyPEGRoD2Q9EVv0LbU)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/f91f7b5a-aa84-43b8-8137-384cea7d42a9" width="900" alt="Track reconstruction result">
+</p>
 
-![QUBO scoring plot](https://drive.google.com/uc?export=view&id=1Dt7ogOG9t9-8rdMqLbk98LkLR4clP3fW)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/362fdaec-2285-41bc-aa31-6ffb91f53043" width="900" alt="Scoring plot">
+</p>
 
 
 ### 1. Dataset Preparation
