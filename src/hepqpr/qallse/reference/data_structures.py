@@ -8,7 +8,7 @@ from typing import Set, Iterable
 
 import numpy as np
 
-from .type_alias import *
+from ..type_alias import *
 from .utils import curvature, angle_diff
 
 

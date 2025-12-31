@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 from trackml.score import score_event
 
-from .type_alias import TQubo, TDimodSample, TXplet, XpletType, TDoublet
+from ..type_alias import TQubo, TDimodSample, TXplet, XpletType, TDoublet
 from .utils import truth_to_xplets, track_to_xplets, diff_rows
 
 

@@ -5,7 +5,7 @@ from numba import njit
 import numpy as np
 import pandas as pd
 
-from .type_alias import *
+from ..type_alias import *
 
 
 # ==========================
