@@ -8,7 +8,7 @@ from typing import Union
 import numpy as np
 from numba import njit
 import pandas as pd
-from .other.stdout_redirect import capture_stdout
+from ..other.stdout_redirect import capture_stdout
 
 from .data_structures import *
 from .data_wrapper import DataWrapper

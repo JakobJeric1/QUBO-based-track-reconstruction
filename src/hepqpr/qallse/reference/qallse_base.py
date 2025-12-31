@@ -7,7 +7,7 @@ from typing import Union
 
 import pandas as pd
 #from dwave_qbsolv import QBSolv
-from .other.stdout_redirect import capture_stdout
+from ..other.stdout_redirect import capture_stdout
 
 from .data_structures import *
 from .data_wrapper import DataWrapper
