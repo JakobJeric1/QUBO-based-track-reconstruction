@@ -63,7 +63,7 @@ Below you can see a quick overview of the main algorithmic steps, which are brie
 directly to the core scripts in the [`scripts/`](scripts) folder, each representing one conceptual stage of the workflow.
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/af8c348f-f213-4eb1-a744-1ba62d47dd7b" width="700" alt="QUBO pipeline diagram">
+  <img src="https://github.com/user-attachments/assets/67652aac-3534-4cfa-8048-bf9ed4ae9827" width="700" alt="QUBO pipeline diagram">
 </p>
 
 ### 1. Dataset Preparation – [`make_datasets.py`](scripts/1_make_datasets.py)
