@@ -28,7 +28,7 @@ backend achieves approximately a fourfold speedup compared to the reference
 implementation, while producing equivalent results.
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/2c0c8f3e-4d7f-4f5e-9c62-7b2c4b94e8b6" width="70%" alt="QUBO build time comparison">
+  <img src="![qubo_build_compare](https://github.com/user-attachments/assets/8ff312bf-fc33-49f8-a5a4-34c2ff53967d)" width="70%" alt="QUBO build time comparison">
 </p>
 
 <p align="center"><em>
