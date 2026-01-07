@@ -1,4 +1,4 @@
-![Neimenovana risba (8)](https://github.com/user-attachments/assets/af8c348f-f213-4eb1-a744-1ba62d47dd7b)# QUBO-based Track Reconstruction
+# QUBO-based Track Reconstruction
 
 
 This repository contains an implementation of a particle track reconstruction pipeline
@@ -29,7 +29,7 @@ backend achieves approximately a fourfold speedup compared to the reference
 implementation, while producing equivalent results.
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/af8c348f-f213-4eb1-a744-1ba62d47dd7b" width="70%" alt="QUBO build time comparison">
+  <img src="https://github.com/user-attachments/assets/8ff312bf-fc33-49f8-a5a4-34c2ff53967d" width="70%" alt="QUBO build time comparison">
 </p>
 
 <p align="center"><em>
@@ -63,7 +63,7 @@ Below you can see a quick overview of the main algorithmic steps, which are brie
 directly to the core scripts in the [`scripts/`](scripts) folder, each representing one conceptual stage of the workflow.
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/b206146d-8844-4071-9d16-e8d430e37eb7" width="700" alt="QUBO pipeline diagram">
+  <img src="https://github.com/user-attachments/assets/af8c348f-f213-4eb1-a744-1ba62d47dd7b" width="700" alt="QUBO pipeline diagram">
 </p>
 
 ### 1. Dataset Preparation – [`make_datasets.py`](scripts/1_make_datasets.py)
