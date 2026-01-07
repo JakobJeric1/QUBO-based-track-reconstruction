@@ -33,7 +33,7 @@ implementation, while producing equivalent results.
 </p>
 
 <p align="center"><em>
-Wall-clock time comparison of the QUBO construction step for the reference and fast backends.
+Wall-clock time comparison of the QUBO construction step for the reference and fast backends, red dots represent full events.
 </em></p>
 
 ## Installation
@@ -73,7 +73,23 @@ To return to the default fast backend, either set `QALLSE_BACKEND=fast` or unset
 
 ## Data
 
-The repository includes a small sample of 10 events under `data/train_10_events` for quick testing and development. Full TrackML datasets with thousands of events are publicly available at: https://www.kaggle.com/c/trackml-particle-identification
+The repository includes a small sample of **10 TrackML events** under `data/train_10_events`,
+intended for quick testing, validation, and rapid deployment of the full reconstruction pipeline.
+These events are sufficient to run all provided scripts without any additional data preparation.
+
+To obtain the example data used in this repository in one step, run:
+
+```bash
+git clone --depth 1 https://github.com/JakobJeric1/QUBO-based_track_reconstruction.git tmp_qubo_data \
+  && cp -r tmp_qubo_data/data ./data \
+  && rm -rf tmp_qubo_data
+```
+This will create a local `data/` directory containing the example events, ready to be used
+with the scripts in the `scripts/` folder.
+
+For large-scale experiments and full benchmarking, complete TrackML datasets with thousands
+of events are publicly available at:
+https://www.kaggle.com/c/trackml-particle-identification
 
 ## Pipeline Overview
 
