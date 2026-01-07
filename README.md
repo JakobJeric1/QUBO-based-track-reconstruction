@@ -1,4 +1,4 @@
-![qubo_build_compare](https://github.com/user-attachments/assets/2985a507-91e8-4047-80d8-4e0d797d556f)# QUBO-based Track Reconstruction
+# QUBO-based Track Reconstruction
 
 This repository contains an implementation of a particle track reconstruction pipeline
 based on Quadratic Unconstrained Binary Optimization (QUBO) models.
@@ -27,6 +27,13 @@ A comparison of wall-clock runtimes for the QUBO construction step shows that th
 backend achieves approximately a fourfold speedup compared to the reference
 implementation, while producing equivalent results.
 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/2c0c8f3e-4d7f-4f5e-9c62-7b2c4b94e8b6" width="70%" alt="QUBO build time comparison">
+</p>
+
+<p align="center"><em>
+Wall-clock time comparison of the QUBO construction step for the reference and fast backends.
+</em></p>
 
 
 
