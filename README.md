@@ -40,10 +40,14 @@ Wall-clock time comparison of the QUBO construction step for the reference and f
 
 > ⚠️ Requires Python 3.12 — newer versions (e.g. 3.13) are not supported due to dependency issues.
 
+By default, the package uses the **fast** backend.  
+For the most common use case, no additional configuration is required: copying the commands
+below into the terminal is sufficient to install the package and use all provided functionality.
+
 ```bash
 # create and activate a virtual environment with Python 3.12 (Linux/macOS)
 python3.12 -m venv .venv
-source .venv/bin/activate        # (Windows: .venv\Scripts\activate)
+source .venv/bin/activate          # (Windows: .venv\Scripts\activate)
 
 # upgrade pip inside the venv
 python -m pip install --upgrade pip setuptools wheel
@@ -51,6 +55,21 @@ python -m pip install --upgrade pip setuptools wheel
 # install directly from GitHub
 pip install "git+https://github.com/JakobJeric1/QUBO-based_track_reconstruction@main"
 ```
+All scripts and APIs will use the fast backend automatically, which provides the optimized
+implementation of the QUBO construction and track reconstruction pipeline.
+
+If desired, the backend can be switched to the reference implementation, which closely follows
+the behaviour and structure of the original `hepqpr-qallse` codebase.
+The backend selection is controlled via an environment variable and can be changed directly
+from the terminal, without modifying any source files.
+
+To use the reference backend, set the environment variable before running any scripts.
+
+```bash
+export QALLSE_BACKEND=reference          # (Windows: $env:QALLSE_BACKEND="reference")
+```
+After setting the variable, all subsequent runs will use the reference backend.
+To return to the default fast backend, either set `QALLSE_BACKEND=fast` or unset the variable.
 
 ## Data
 
