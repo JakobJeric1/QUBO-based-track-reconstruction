@@ -40,9 +40,9 @@ Wall-clock time comparison of the QUBO construction step for the reference and f
 
 > ⚠️ Requires Python 3.12 — newer versions (e.g. 3.13) are not supported due to dependency issues.
 
-By default, the package uses the **fast** backend.  
-For the most common use case, no additional configuration is required: copying the commands
-below into the terminal is sufficient to install the package and use all provided functionality.
+By default, the package uses the **fast** backend. For the most common use case, no additional configuration is required:
+copying the commands below into the terminal is sufficient to install the package and use all provided functionality
+within the activated Python 3.12 virtual environment.
 
 ```bash
 # create and activate a virtual environment with Python 3.12 (Linux/macOS)
