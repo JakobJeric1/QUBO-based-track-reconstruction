@@ -1,10 +1,34 @@
-# QUBO-based Track Reconstruction
+![qubo_build_compare](https://github.com/user-attachments/assets/2985a507-91e8-4047-80d8-4e0d797d556f)# QUBO-based Track Reconstruction
 
-This project implements a full pipeline for reconstructing particle tracks using Quadratic Unconstrained Binary Optimization (QUBO) models.
-It’s **almost entirely based on the original [hepqpr-qallse](https://github.com/derlin/hepqpr-qallse)** repository, with only minimal modifications for Python 3.12 compatibility.
-Additional scripts demonstrate solving QUBOs using the OpenJij simulated quantum annealer.
+This repository contains an implementation of a particle track reconstruction pipeline
+based on Quadratic Unconstrained Binary Optimization (QUBO) models.
+
+All core ideas, reconstruction logic, and pipeline structure originate from the original
+[hepqpr-qallse](https://github.com/derlin/hepqpr-qallse) project, and full credit for the
+algorithmic design goes to its original authors.
+This repository does not introduce a new tracking method, but provides a modified version
+of the original source code that is compatible with Python 3.12.
 
 > Note: The original `qbsolv` backend is not included, as it is currently incompatible with Python 3.12 and no longer maintained.
+
+The modified source code introduces a clear separation between two interchangeable
+implementations: a *reference* backend and a *fast* backend.
+The reference backend closely follows the behaviour and structure of the original
+implementation, while the fast backend provides a functionally equivalent alternative
+with improved runtime characteristics.
+
+The differences between the two backends are most pronounced in the QUBO construction
+phase, which remains the dominant computational bottleneck of the overall pipeline.
+While the underlying model and constraints are unchanged, the fast backend reorganizes
+parts of the QUBO-building logic to reduce overhead and improve execution time.![Uploading qubo_build_compare.svg…]()
+
+
+A comparison of wall-clock runtimes for the QUBO construction step shows that the fast
+backend achieves approximately a fourfold speedup compared to the reference
+implementation, while producing equivalent results.
+
+
+
 
 ## Installation
 
