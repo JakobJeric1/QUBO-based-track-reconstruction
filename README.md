@@ -20,7 +20,7 @@ with improved runtime characteristics.
 The differences between the two backends are most pronounced in the QUBO construction
 phase, which remains the dominant computational bottleneck of the overall pipeline.
 While the underlying model and constraints are unchanged, the fast backend reorganizes
-parts of the QUBO-building logic to reduce overhead and improve execution time.![Uploading qubo_build_compare.svg…]()
+parts of the QUBO-building logic to reduce overhead and improve execution time.
 
 
 A comparison of wall-clock runtimes for the QUBO construction step shows that the fast
