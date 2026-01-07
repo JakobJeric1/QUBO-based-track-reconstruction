@@ -28,14 +28,12 @@ backend achieves approximately a fourfold speedup compared to the reference
 implementation, while producing equivalent results.
 
 <p align="center">
-  <img src="![qubo_build_compare](https://github.com/user-attachments/assets/8ff312bf-fc33-49f8-a5a4-34c2ff53967d)" width="70%" alt="QUBO build time comparison">
+  <img src="https://github.com/user-attachments/assets/8ff312bf-fc33-49f8-a5a4-34c2ff53967d" width="70%" alt="QUBO build time comparison">
 </p>
 
 <p align="center"><em>
 Wall-clock time comparison of the QUBO construction step for the reference and fast backends.
 </em></p>
-
-
 
 ## Installation
 
