@@ -116,4 +116,4 @@ The final step aggregates the solver results and evaluates them against the grou
   <img src="https://github.com/user-attachments/assets/362fdaec-2285-41bc-aa31-6ffb91f53043" width="48%" alt="Scoring plot SQA">
 </p>
 
-<p align="center"><em>Figure 2 — Comparison of Precision and Recall for ten TrackML events at varying densities using Simulated Annealing (left) and Simulated Quantum Annealing (right). Red dots represent full events. </em></p>
+<p align="center"><em>Figure 2 — Comparison of Precision and Recall for ten TrackML events at varying densities using Simulated Annealing (left) and Simulated Quantum Annealing (right).</em></p>
