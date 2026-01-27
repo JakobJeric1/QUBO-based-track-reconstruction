@@ -93,40 +93,32 @@ https://www.kaggle.com/c/trackml-particle-identification
 
 ## Pipeline Overview
 
-The algorithm performs end-to-end reconstruction of particle tracks from raw (TrackML) detector hits using a QUBO-based optimization approach.
-Below you can see a quick overview of the main algorithmic steps, which are briefly described in the sections that follow. Steps **1–4** correspond
-directly to the core scripts in the [`scripts/`](scripts) folder, each representing one conceptual stage of the workflow.
+The algorithm performs end-to-end reconstruction of particle tracks from raw detector hits using a QUBO-based optimization approach. The process is divided into four main stages, each handled by the scripts in the [`scripts/`](scripts) folder.
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/5bd2068b-5ea7-4e5e-89f0-1a4461e93ef8" width="700" alt="QUBO pipeline diagram">
 </p>
 
-### 1. Dataset Preparation – [`make_datasets.py`](scripts/1_make_datasets.py)
-The process begins with transforming raw detector hits into meaningful geometric relationships. In this step, nearby hits are connected into
-*doublets* and then combined into *triplets*, which represent short, locally consistent fragments of potential particle trajectories.
-This forms the building blocks from which complete tracks will later be reconstructed.
 
-### 2. QUBO Construction – [`build_qubos.py`](scripts/2_build_qubos.py)
-Each event is then expressed as a **QUBO problem** — a mathematical formulation where every triplet becomes a binary decision variable.
-The optimization goal balances two competing ideas:
-it rewards smooth, physically plausible track continuations, and penalizes conflicting or overlapping segments.
-The result is a compact representation of the entire tracking problem as an energy landscape that can be explored by solvers.
 
-### 3. Solver Execution – [`solve_qubos_neal.py`](scripts/3a_solve_qubos_neal.py) and [`solve_qubos_sqa.py`](scripts/3b_solve_qubos_sqa.py)
-At this stage, specialized annealing algorithms are used to search the energy landscape for the lowest-energy configurations.
-These correspond to the most consistent combinations of triplets — in other words, the most likely particle tracks.
-Two solvers are compared: a classical simulated annealer (`dwave-neal`) and a quantum-inspired one (`OpenJij SQA`), allowing us to study how both approaches perform on the same problem.
+### 1. Dataset Preparation – [`1_make_datasets.py`](scripts/1_make_datasets.py)
+This stage transforms raw TrackML data into sub-sampled events at varying densities. It applies a transverse momentum cut ($P_T \geq 1.0$ GeV) to focus on high-momentum particles and identifies the initial geometric connections (doublets) between hits. This creates a manageable set of candidates for the reconstruction pipeline.
 
-### 4. Evaluation and Scoring – [`plot_scores.py`](scripts/4_plot_scores.py)
+### 2. QUBO Construction – [`2_build_QUBO.py`](scripts/2_build_QUBO.py)
+The tracking problem is formulated as a mathematical optimization model. Potential track segments (triplets) are represented as binary variables. The script defines an energy landscape where physically smooth trajectories are assigned rewards (lower energy) and conflicting or unphysical overlaps are penalized.
 
-Finally, the reconstructed tracks are compared against the known ground truth from the simulated detector data.
-Precision and recall metrics quantify how accurately the algorithm identifies true tracks while avoiding false ones.
-To understand the algorithm’s behavior across different conditions, results are evaluated for **10 separate events** at multiple **dataset densities**.
-The plots below summarize how reconstruction quality changes with event complexity and solver type.
+### 3. Solver Execution – [`3a_solve_neal.py`](scripts/3a_solve_neal.py) & [`3b_solve_sqa.py`](scripts/3b_solve_sqa.py)
+The energy landscape is explored using two different annealing techniques to find the global minimum—representing the most likely set of real particle tracks. 
+* **Neal** uses classical Simulated Annealing (SA), relying on thermal fluctuations to reach the ground state. 
+* **OpenJij (SQA)** uses Simulated Quantum Annealing, employing simulated quantum tunneling to traverse energy barriers. 
+Both scripts output detailed tracking metrics and energy statistics for comparison.
+
+### 4. Evaluation and Plotting – [`4_plot.py`](scripts/4_plot.py)
+The final step aggregates the solver results and evaluates them against the ground truth. It calculates Precision (purity) and Recall (efficiency) and generates visualizations using a 3rd-degree polynomial fit. This allows for a clear comparison of how each solver handles increasing event complexity and particle density.
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/f91f7b5a-aa84-43b8-8137-384cea7d42a9" width="48%" alt="Scoring plot SA">
   <img src="https://github.com/user-attachments/assets/362fdaec-2285-41bc-aa31-6ffb91f53043" width="48%" alt="Scoring plot SQA">
 </p>
 
-<p align="center"><em>Figure 2 — Precision and recall for ten TrackML events at varying dataset densities, comparing classical simulated annealing (SA, left) and quantum-inspired simulated annealing (SQA, right).</em></p>
+<p align="center"><em>Figure 2 — Comparison of Precision and Recall for ten TrackML events at varying densities using Simulated Annealing (left) and Simulated Quantum Annealing (right). Red dots represent full events. </em></p>
