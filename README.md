@@ -84,8 +84,9 @@ The pipeline scripts expect detector hits located in the `data/` directory.
 
 * **Fetch Sample Data (10 events):** If you installed the library only but need the included samples for testing, use this one-liner to pull the data folder:
 ```bash
-git clone --depth 1 [https://github.com/JakobJeric1/QUBO-based_track_reconstruction.git](https://github.com/JakobJeric1/QUBO-based_track_reconstruction.git) tmp && cp -r tmp/data ./data && rm -rf tmp
+git clone --depth 1 https://github.com/JakobJeric1/QUBO-based_track_reconstruction.git tmp && cp -r tmp/data ./data && rm -rf tmp
 ```
+* **Full Datasets**: For large-scale benchmarks, download the official TrackML dataset from Kaggle [TrackML Particle Tracking Challange] (https://www.kaggle.com/competitions/trackml-particle-identification/data)
 
 ## Pipeline Overview
 
