@@ -38,58 +38,54 @@ Wall-clock time comparison of the QUBO construction step for the reference and f
 
 ## Installation
 
-> ⚠️ Requires Python 3.12 — newer versions (e.g. 3.13) are not supported due to dependency issues.
+> ⚠️ **Requirement:** Python 3.12 is mandatory. Versions 3.13+ are currently unsupported due to dependency constraints.
 
-By default, the package uses the **fast** backend. For the most common use case, no additional configuration is required:
-copying the commands below into the terminal is sufficient to install the package and use all provided functionality
-within the activated Python 3.12 virtual environment.
+### Full Project & Benchmarking
+This setup clones the entire repository—including the research scripts and sample data—and installs the package in editable mode within a dedicated virtual environment.
 
 ```bash
-# create and activate a virtual environment with Python 3.12 (Linux/macOS)
-python3.12 -m venv .venv
-source .venv/bin/activate          # (Windows: .venv\Scripts\activate)
+# Clone and enter repo
+git clone https://github.com/JakobJeric1/QUBO-based_track_reconstruction.git && cd QUBO-based_track_reconstruction
 
-# upgrade pip inside the venv
-python -m pip install --upgrade pip setuptools wheel
+# Create and activate venv
+python3.12 -m venv venv
+source venv/bin/activate              # Windows: .\venv\Scripts\activate
 
-# install directly from GitHub
+# Install package in editable mode
+pip install --upgrade pip setuptools wheel && pip install -e .
+```
+
+### Standard Library Install
+
+Installs the reconstruction engine directly as a dependency. This is intended for users who want to import the tracking logic into their own external projects.
+
+```bash
 pip install "git+https://github.com/JakobJeric1/QUBO-based_track_reconstruction@main"
 ```
-All scripts and APIs will use the fast backend automatically, which provides the optimized
-implementation of the QUBO construction and track reconstruction pipeline.
 
-If desired, the backend can be switched to the reference implementation, which closely follows
-the behaviour and structure of the original `hepqpr-qallse` codebase.
-The backend selection is controlled via an environment variable and can be changed directly
-from the terminal, without modifying any source files.
+## Configuration & Data
 
-To use the reference backend, set the environment variable before running any scripts.
+### Backend Control
+
+The system features two interchangeable backends. The fast backend (default) is optimized for runtime efficiency, while the reference backend provides strict parity with the original codebase. Switch between them using environment variables:
 
 ```bash
-export QALLSE_BACKEND=reference          # (Windows: $env:QALLSE_BACKEND="reference")
+# Set to reference logic
+export QALLSE_BACKEND=reference       # Windows: $env:QALLSE_BACKEND="reference"
+
+# Revert to optimized logic (default)
+export QALLSE_BACKEND=fast            # Windows: $env:QALLSE_BACKEND="fast"
 ```
-After setting the variable, all subsequent runs will use the reference backend.
-To return to the default fast backend, either set `QALLSE_BACKEND=fast` or unset the variable.
 
-## Data
+### TrackML Datasets
 
-The repository includes a small sample of **10 TrackML events** under `data/train_10_events`,
-intended for quick testing, validation, and rapid deployment of the full reconstruction pipeline.
-These events are sufficient to run all provided scripts without any additional data preparation.
+### TrackML Datasets
+The pipeline scripts expect detector hits located in the `data/` directory.
 
-To obtain the example data used in this repository in one step, run:
-
+* **Fetch Sample Data (10 events):** If you installed the library only but need the included samples for testing, use this one-liner to pull the data folder:
 ```bash
-git clone --depth 1 https://github.com/JakobJeric1/QUBO-based_track_reconstruction.git tmp_qubo_data \
-  && cp -r tmp_qubo_data/data ./data \
-  && rm -rf tmp_qubo_data
+git clone --depth 1 [https://github.com/JakobJeric1/QUBO-based_track_reconstruction.git](https://github.com/JakobJeric1/QUBO-based_track_reconstruction.git) tmp && cp -r tmp/data ./data && rm -rf tmp
 ```
-This will create a local `data/` directory containing the example events, ready to be used
-with the scripts in the `scripts/` folder.
-
-For large-scale experiments and full benchmarking, complete TrackML datasets with thousands
-of events are publicly available at:
-https://www.kaggle.com/c/trackml-particle-identification
 
 ## Pipeline Overview
 
