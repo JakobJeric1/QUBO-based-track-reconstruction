@@ -111,8 +111,10 @@ Both scripts output detailed tracking metrics and energy statistics for comparis
 ### 4. Evaluation and Plotting – [`4_plot.py`](scripts/4_plot.py)
 The final step aggregates the solver results and evaluates them against the ground truth. It calculates Precision (purity) and Recall (efficiency) and generates visualizations using a 3rd-degree polynomial fit. This allows for a clear comparison of how each solver handles increasing event complexity and particle density.
 
+
+
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/f91f7b5a-aa84-43b8-8137-384cea7d42a9" width="48%" alt="Scoring plot SA">
+  <img src="https://github.com/user-attachments/assets/159e5478-850c-4a3c-b3f5-e079e622f1fb" width="48%" alt="Scoring plot SA">
   <img src="https://github.com/user-attachments/assets/362fdaec-2285-41bc-aa31-6ffb91f53043" width="48%" alt="Scoring plot SQA">
 </p>
 
