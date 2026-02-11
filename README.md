@@ -29,7 +29,7 @@ wall-clock runtimes shows that the *fast* backend achieves approximately a 4x sp
 compared to the reference, while the *fastest* backend reaches a ~12x total speedup.
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/124573c9-4082-422c-820e-85fac3635e5e" width="0%" alt="QUBO build time comparison">
+  <img src="https://github.com/user-attachments/assets/124573c9-4082-422c-820e-85fac3635e5e" width="80%" alt="QUBO build time comparison">
 </p>
 
 <p align="center"><em>
