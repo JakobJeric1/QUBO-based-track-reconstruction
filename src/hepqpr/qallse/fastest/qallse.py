@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 from numba import njit, typed
 
-from hepqpr.qallse.fast.data_structures import *
+from .data_structures import *
 from .qallse_base import ConfigBase, QallseBase
 from .utils import pd_read_csv_array
 
@@ -62,7 +62,7 @@ def _create_triplets_numba(doublets_np, hits_np, flat_outer_indices, offsets, co
     _TWO_PI = 2.0 * _PI
 
     for i in range(len(doublets_np)):
-        d1 = doublets_np[i]
+        d1 = doublets_np[i] 
         
         outer_start = offsets[i]
         outer_end = offsets[i+1]

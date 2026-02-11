@@ -369,4 +369,3 @@ class QallseBase(ABC):
             return Q, (n_vars, n_incl_couplers, n_excl_couplers)
         else:
             return Q
-
