@@ -12,21 +12,21 @@ of the original source code that is compatible with Python 3.12.
 
 > Note: The original `qbsolv` backend is not included, as it is currently incompatible with Python 3.12 and no longer maintained.
 
-The modified source code introduces a clear separation between two interchangeable
-implementations: a *reference* backend and a *fast* backend.
-The reference backend closely follows the behaviour and structure of the original
-implementation, while the fast backend provides a functionally equivalent alternative
-with improved runtime characteristics.
+The modified source code introduces a clear separation between three interchangeable
+implementations:
 
-The differences between the two backends are most pronounced in the QUBO construction
-phase, which remains the dominant computational bottleneck of the overall pipeline.
-While the underlying model and constraints are unchanged, the fast backend reorganizes
-parts of the [source](src/hepqpr/qallse/fast) code to reduce overhead and improve execution time.
+* **[Reference](src/hepqpr/qallse/reference)**: The baseline implementation. It closely follows the behaviour and
+  structure of the original code to serve as a standard for correctness.
+* **[Fast](src/hepqpr/qallse/fast)** (Default): An optimized implementation.
+  It performs "early cuts" on raw data—checking validity before object instantiation—
+  to reduce overhead while maintaining moderate memory usage.
+* **[Fastest](src/hepqpr/qallse/fastest)**: A high-performance implementation using
+  Numba (JIT) compilation. It vectorizes the core logic to maximize throughput,
+  though this requires significantly more memory during execution.
 
-
-A comparison of wall-clock runtimes for the QUBO construction step shows that the fast
-backend achieves approximately a fourfold speedup compared to the reference
-implementation, while producing equivalent results.
+The differences are most pronounced in the QUBO construction phase. A comparison of
+wall-clock runtimes shows that the *fast* backend achieves approximately a 4x speedup
+compared to the reference, while the *fastest* backend reaches a ~12x total speedup.
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/8ff312bf-fc33-49f8-a5a4-34c2ff53967d" width="70%" alt="QUBO build time comparison">
@@ -67,16 +67,21 @@ pip install "git+https://github.com/JakobJeric1/QUBO-based_track_reconstruction@
 
 ### Backend Control
 
-The system features two interchangeable backends. The fast backend (default) is optimized for runtime efficiency, while the reference backend provides strict parity with the original codebase. Switch between them using environment variables:
+The system features three interchangeable backends. The `fast` backend (default) is optimized for runtime efficiency, while the `reference` backend provides strict parity with the original codebase. The `fastest` backend offers maximum speed but requires significantly more memory.
+
+Switch between them using environment variables:
 
 ```bash
-# Set to reference logic
-export QALLSE_BACKEND=reference       # Windows: $env:QALLSE_BACKEND="reference"
+# Optimized implementation (Default)
+export QALLSE_BACKEND=fast        # Windows: $env:QALLSE_BACKEND="fast"
 
-# Revert to optimized logic (default)
-export QALLSE_BACKEND=fast            # Windows: $env:QALLSE_BACKEND="fast"
+# JIT-compiled implementation (High Performance)
+export QALLSE_BACKEND=fastest     # Windows: $env:QALLSE_BACKEND="fastest"
+
+# Legacy/Reference implementation
+export QALLSE_BACKEND=reference   # Windows: $env:QALLSE_BACKEND="reference"
 ```
-
+> Warning: The fastest backend achieves its speed through extensive vectorization, which significantly increases memory usage. Large events may trigger Out-Of-Memory errors on systems with 32GB of RAM or less.
 ### TrackML Datasets
 The pipeline scripts expect detector hits located in the `data/` directory.
 
