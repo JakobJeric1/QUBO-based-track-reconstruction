@@ -29,16 +29,18 @@ wall-clock runtimes shows that the *fast* backend achieves approximately a 4x sp
 compared to the reference, while the *fastest* backend reaches a ~12x total speedup.
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/8ff312bf-fc33-49f8-a5a4-34c2ff53967d" width="70%" alt="QUBO build time comparison">
+  <img src="https://github.com/user-attachments/assets/124573c9-4082-422c-820e-85fac3635e5e" width="70%" alt="QUBO build time comparison">
 </p>
 
 <p align="center"><em>
 Wall-clock time comparison of the QUBO construction step for the reference and fast backends, red dots represent full events.
 </em></p>
 
+
+
 ## Installation
 
-> ⚠️ **Requirement:** Python 3.12 is mandatory. Versions 3.13+ are currently unsupported due to dependency constraints.
+> **Requirement:** Python 3.12 is mandatory. Versions 3.13+ are currently unsupported due to dependency constraints.
 
 ### Full Project & Benchmarking
 This setup clones the entire repository—including the research scripts and sample data—and installs the package in editable mode within a dedicated virtual environment.
@@ -81,7 +83,9 @@ export QALLSE_BACKEND=fastest     # Windows: $env:QALLSE_BACKEND="fastest"
 # Legacy/Reference implementation
 export QALLSE_BACKEND=reference   # Windows: $env:QALLSE_BACKEND="reference"
 ```
-> Warning: The fastest backend achieves its speed through extensive vectorization, which significantly increases memory usage. Large events may trigger Out-Of-Memory errors on systems with 32GB of RAM or less.
+
+> **Warning:** The fastest backend achieves its speed through extensive vectorization, which significantly increases memory usage. Large events may trigger Out-Of-Memory errors on systems with 32GB of RAM or less.
+
 ### TrackML Datasets
 The pipeline scripts expect detector hits located in the `data/` directory.
 
