@@ -33,7 +33,7 @@ compared to the reference, while the *fastest* backend reaches a ~12x total spee
 </p>
 
 <p align="center"><em>
-Wall-clock time comparison of the QUBO construction step for the reference and fast backends, red dots represent full events.
+Wall-clock time comparison of the QUBO construction step for the reference, fast and fastest backends, red dots represent full events. (I was not able to build a QUBO for largest full event using fastest backend, as it used more than 32GB of RAM.)
 </em></p>
 
 
