@@ -8,7 +8,7 @@ All core ideas, reconstruction logic, and pipeline structure originate from the 
 [hepqpr-qallse](https://github.com/derlin/hepqpr-qallse) project, and full credit for the
 algorithmic design goes to its original author.
 This repository does not introduce a new tracking method, but provides a modified version
-of the original source code that is compatible with Python 3.12.
+of the original source code that is compatible with newer Python and can run faster.
 
 > Note: The original `qbsolv` backend is not included, as it is currently incompatible with Python 3.12 and no longer maintained.
 
@@ -40,7 +40,6 @@ Wall-clock time comparison of the QUBO construction step for the reference, fast
 
 ## Installation
 
-> **Requirement:** Python 3.12 is mandatory. Versions 3.13+ are currently unsupported due to dependency constraints.
 
 ### Full Project & Benchmarking
 This setup clones the entire repository—including the research scripts and sample data—and installs the package in editable mode within a dedicated virtual environment.
@@ -59,9 +58,11 @@ pip install --upgrade pip setuptools wheel && pip install -e .
 
 ### Standard Library Install
 
-Installs the reconstruction engine directly as a dependency. This is intended for users who want to import the tracking logic into their own external projects.
+Creates and activates virtual environment and installs the reconstruction engine directly as a dependency. This is intended for users who want to import the tracking logic into their own external projects.
 
 ```bash
+python -m venv .venv
+source .venv/bin/activate
 pip install "git+https://github.com/JakobJeric1/QUBO-based_track_reconstruction@main"
 ```
 
